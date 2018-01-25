@@ -1,5 +1,7 @@
 #include<windows.h>
 #include "stdafx.h"
+#include "D3DUtility.h"
+using namespace d3d;
 
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -35,6 +37,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 	{
 		return 0;
 	}
+	 
+	InitD3D(hwnd);
 
 	//run the message loop
 	MSG msg = {};
@@ -42,6 +46,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
+
+		Display();
 	}
 
 	return 0;
@@ -59,7 +65,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		PAINTSTRUCT ps;
 		HDC hdc = BeginPaint(hwnd, &ps);
 
-		FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
+		//FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
 
 		EndPaint(hwnd, &ps);
 		return 0;
