@@ -38,6 +38,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 	}
 
 	InitD3D(hwnd);
+	SetUp();
 
 	static float lastTime = (float)timeGetTime();
 
@@ -64,8 +65,11 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	switch (uMsg)
 	{
 	case WM_DESTROY:
+	{
+		CleanUp();
 		PostQuitMessage(0);
 		return 0;
+	}
 	case WM_PAINT:
 	{
 		PAINTSTRUCT ps;
