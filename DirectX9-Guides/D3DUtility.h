@@ -36,7 +36,7 @@ namespace d3d
 		d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
 
 		HRESULT hr = _d3d9->CreateDevice(
-			1,
+			0,
 			D3DDEVTYPE_HAL,
 			hwnd,
 			vp,
