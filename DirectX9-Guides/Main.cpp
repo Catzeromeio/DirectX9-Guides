@@ -25,8 +25,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 		0,
 		CLASS_NAME,
 		L"Learn to program windows",
-		WS_VISIBLE|WS_OVERLAPPEDWINDOW,
-		0,0,600,800,
+		WS_VISIBLE | WS_OVERLAPPEDWINDOW,
+		0, 0, 600, 800,
 		NULL,
 		NULL,
 		hInstance,
@@ -37,17 +37,24 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 	{
 		return 0;
 	}
-	 
+
 	InitD3D(hwnd);
+
+	static float lastTime = (float)timeGetTime();
 
 	//run the message loop
 	MSG msg = {};
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
+		float currentTime = (float)timeGetTime();
+
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 
-		Display();
+		float deltaTime = (currentTime - lastTime)*0.001f;
+		Display(deltaTime);
+
+		lastTime = currentTime;
 	}
 
 	return 0;

@@ -92,7 +92,12 @@ namespace d3d
 		return true;
 	}
 
-	bool Display()
+	bool SetUp()
+	{
+		return true;
+	}
+
+	bool Display(float timeDelta)
 	{
 		if (_device)
 		{
@@ -101,8 +106,31 @@ namespace d3d
 
 			return true;
 		}
-
 		return false;
 	}
+
+	void CleanUp()
+	{
+
+	}
+
+	template<class T> void Release(T t)
+	{
+		if (t)
+		{
+			t->Release();
+			t = 0;
+		}
+	}
+
+	template<class T> void Delete(T t)
+	{
+		if (t)
+		{
+			delete t;
+			t = 0;
+		}
+	}
+
 }
 
