@@ -6,6 +6,9 @@ namespace d3d
 	IDirect3D9 * _d3d9;
 	IDirect3DDevice9 * _device;
 
+	int ScreenHight = 600;
+	int ScreenWeight = 800;
+
 	bool InitD3D(HWND hwnd)
 	{
 		_d3d9 = Direct3DCreate9(D3D_SDK_VERSION);
@@ -24,8 +27,8 @@ namespace d3d
 
 		ZeroMemory(&d3dpp, sizeof(d3dpp));
 
-		d3dpp.BackBufferWidth = 800;
-		d3dpp.BackBufferHeight = 600;
+		d3dpp.BackBufferWidth = ScreenWeight;
+		d3dpp.BackBufferHeight = ScreenHight;
 		//d3dpp.BackBufferFormat = D3DFMT_X8B8G8R8;
 		d3dpp.BackBufferCount = 1;
 		d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;

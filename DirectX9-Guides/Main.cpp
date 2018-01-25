@@ -3,7 +3,6 @@
 #include "D3DUtility.h"
 using namespace d3d;
 
-
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow)
@@ -26,7 +25,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 		CLASS_NAME,
 		L"Learn to program windows",
 		WS_VISIBLE | WS_OVERLAPPEDWINDOW,
-		0, 0, 600, 800,
+		0, 0, ScreenHight, ScreenWeight,
 		NULL,
 		NULL,
 		hInstance,
