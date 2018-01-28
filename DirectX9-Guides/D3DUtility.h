@@ -183,8 +183,9 @@ namespace d3d
 		{
 			//spin the cube
 			D3DXMATRIX Rx, Ry;
-			D3DXMatrixRotationX(&Rx, D3DX_PI / 4.0f);
 			static float y = 0.0f;
+
+			D3DXMatrixRotationX(&Rx, y);
 			D3DXMatrixRotationY(&Ry, y);
 			y += timeDelta;
 			if (y >= 2 * D3DX_PI)
@@ -195,7 +196,7 @@ namespace d3d
 			_device->SetTransform(D3DTS_WORLD, &R);
 
 			//draw the scene
-			_device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xffffff, 1.0f, 0);
+			_device->Clear(0, 0, D3DCLEAR_TARGET, 0xffffff, 1.0f, 0);
 			_device->BeginScene();
 			_device->SetStreamSource(0, VB, 0, sizeof(Vertex));
 			_device->SetIndices(IB);

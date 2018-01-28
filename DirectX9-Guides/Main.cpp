@@ -44,12 +44,21 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 
 	//run the message loop
 	MSG msg = {};
-	while (GetMessage(&msg, NULL, 0, 0))
+	while (true)
 	{
 		float currentTime = (float)timeGetTime();
 
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+		while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+		if (msg.message == WM_QUIT)
+		{
+			CleanUp();
+			return 0;
+		}
 
 		float deltaTime = (currentTime - lastTime)*0.001f;
 		Display(deltaTime);
@@ -66,7 +75,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 	case WM_DESTROY:
 	{
-		CleanUp();
 		PostQuitMessage(0);
 		return 0;
 	}
