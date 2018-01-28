@@ -6,7 +6,7 @@ namespace d3d
 	IDirect3D9 * _d3d9;
 	IDirect3DDevice9 * _device;
 
-	int ScreenHight = 600;
+	int ScreenHight = 800;
 	int ScreenWeight = 800;
 
 	IDirect3DVertexBuffer9 * VB = 0;
