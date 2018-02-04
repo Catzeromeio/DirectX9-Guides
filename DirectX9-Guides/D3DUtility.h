@@ -182,6 +182,7 @@ namespace d3d
 
 	void CleanUp()
 	{
+		Triangle->Release();
 	}
 }
 
